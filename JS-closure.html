@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>JS-closure</title>
+	<!-- <link rel="stylesheet" href=""> -->
+</head>
+<body>
+	<script>
+		var toggle = (function () {
+			var state = true;
+			return function () {
+				state = !state
+				return state;
+			}
+		})();
+		console.log(toggle());		//false
+		console.log(toggle());		//true
+
+		function bindName(name) {
+			return function (action) {
+				console.log(name + ' is ' + action + 'ing.');
+			}
+		}
+		var doing = bindName('yj');
+		doing('work');		//yj is working.
+	</script>
+</body>
+</html>

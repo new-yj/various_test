@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Event-true</title>
+	<!-- <link rel="stylesheet" href=""> -->
+	<style>
+		#outer {
+			width: 300px;
+			height: 300px;
+			background: #000;
+			color: #fff;
+		}
+		#inner {
+			width: 100px;
+			height: 100px;
+			background: #fff;
+			color: #000;
+		}
+		#other {
+			width: 50px;
+			height: 50px;
+			background: #ff0;
+		}
+	</style>
+</head>
+<body>
+	<div id="outer">
+		outer
+		<div id="inner">inner</div>
+	</div>
+	<div id="other">other</div>
+	<script>
+		let outer = document.getElementById('outer'),
+			inner = document.getElementById('inner');
+
+		outer.addEventListener('click', function () {
+			console.log('outer');
+		}, true);		//true为捕获
+		inner.addEventListener('click', function () {
+			console.log('inner');
+		});
+
+		document.getElementById('other').onclick = function (e) {
+			console.log(e.target);
+		}
+	</script>
+</body>
+</html>

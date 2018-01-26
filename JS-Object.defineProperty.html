@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="renderer" content="webkit" />
+		<title>Object.defineProperty</title>
+	</head>
+	<body>
+		<script>
+			(function () {
+				var obj = {name: 'YiJiong'};
+				Object.defineProperty(obj, 'gender', {
+					configurable: false,		//能否删除
+					enumerable: false,
+					writable: false,		//能否修改
+					value: 'male',
+				});
+	
+				obj.gender = 'female';		//无法修改
+				delete obj.gender;		//无法删除
+				console.log(obj.gender);		//male
+				for (let key in obj) {
+					console.log(key);		//没有输出gender
+				}
+			})();
+
+			(function () {
+				var obj = {name: 'YiJiong'};
+				Object.defineProperty(obj, 'gender', {
+					get: function () {
+						console.log('get gender');
+						return gender;
+					},
+					set: function (val) {
+						console.log('set gender');
+						gender = val;
+					}
+				});
+	
+				obj.gender = 'man';		//set gender
+				delete obj.gender;		//无法删除
+				console.log(obj.gender);		//get gender\nman
+				for (let key in obj) {
+					console.log(key);		//没有输出gender
+				}
+			})();
+
+			var obj = {name: 'YiJiong'};
+			Object.defineProperty(obj, 'gender', {
+				get: function () {
+					console.log('get gender');
+					return gender;
+				},
+				set: function (val) {
+					console.log('set gender');
+					gender = val;
+				}
+			});
+			console.log(obj.gender);		//Why man?
+		</script>
+	</body>
+</html>

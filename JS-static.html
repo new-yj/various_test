@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JS-static</title>
+    <!-- <link rel="stylesheet" href=""> -->
+</head>
+<body>
+    <script>
+        class People {
+            constructor(name) {
+                this.name = name;
+            }
+            printName() {
+                console.log(this.name);
+            }
+            static formatName(name) {
+                return name[0].toUpperCase() + name.substr(1).toLowerCase();
+            }
+        }
+        console.log(People.formatName('wtt'));
+        var wtt = new People('wtt');
+        wtt.printName();
+        console.log(wtt);
+    </script>
+</body>
+</html>

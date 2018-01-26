@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Function-call</title>
+    <!-- <link rel="stylesheet" href=""> -->
+</head>
+<body>
+    <script>
+        var log = console.log.bind(console);
+
+        var value = 'test';
+        function test () {
+            var _this = this;
+            log(_this.value);
+        }
+
+        var obj = {
+            value: 'obj'
+        }
+
+        test.call(obj);     //第二第三个参数用逗号隔开
+        test.apply(obj);        //之后的参数用一个数组
+
+
+        var lover = {
+            name: 'wtt',
+            getName: function () {
+                return this.name;
+            },
+        }
+        var getName = lover.getName.bind(lover);
+        log(getName());
+
+    </script>
+</body>
+</html>

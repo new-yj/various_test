@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>JS-class</title>
+	<!-- <link rel="stylesheet" href=""> -->
+</head>
+<body>
+	<script>
+		class People {
+			constructor(name, gender) {
+				this.name = name;
+				this.gender = gender;
+			}
+
+			say() {
+				console.log(`${this.name} ${this.gender}`);
+			}
+		}
+
+		class Student extends People {
+			constructor(name, gender, number) {
+				super(name, gender);
+				this.number = number;
+			}
+
+			sayAll() {
+				console.log(`${this.name} ${this.gender} ${this.number}`)
+			}
+		}
+
+		var yj = new People('yj', 'male');
+		var wtt = new Student('wtt', 'female', 35);
+		console.log(yj.say==wtt.say);		//true
+		wtt.sayAll();
+	</script>
+</body>
+</html>

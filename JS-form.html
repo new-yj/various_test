@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JS-form</title>
+    <!-- <link rel="stylesheet" href=""> -->
+</head>
+<body>
+    <form id="form" name="formName" >
+        <label>
+            formTest
+        <input type="text" name="inputName" value="" id="input" />
+        </label>
+        <input type="submit" value="提交" />
+    </form>
+
+    <script>
+        var form = document.getElementById('form');
+        var input = document.getElementById('input');
+
+        form.onsubmit = function() {
+            console.log('value: ' + formName.inputName.value);
+            return false;
+        }
+        input.onchange = function() {
+            console.log(this.value);
+            return false;
+        }
+    </script>
+</body>
+</html>
