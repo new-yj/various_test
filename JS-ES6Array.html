@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>JS-ES6Array</title>
+	<!-- <link rel="stylesheet" href=""> -->
+</head>
+<body>
+	
+	<script>
+		// reduce
+		console.log('============= reduce ===============');
+		(function () {
+			var arr = [1, 2, 3, 4, 5, 6];
+			var product = arr.reduce(function (accumulator, value) {
+				return accumulator * value;
+			}, 1);
+			console.log(product);
+		})();
+
+		// forEach
+		console.log('============= forEach ===============');
+		(function () {
+			var arr = [0,1,2,3,4,5];
+			arr.forEach(function (value) {
+				console.log(value);
+			});
+	
+			arr.forEach(function (curValue, index, array) {
+				console.log(curValue + ' ' + index + ' ' + array);
+			});
+		})();
+
+		// sort
+		console.log('============= sort ===============');
+		(function () {
+			var arr = [111,32,323,1,44353,3454,43];
+			var sorted = arr.sort(function (a, b) {
+				if (typeof(a) === "number" && typeof(b) === "number"){
+					return a - b;
+				} else {
+					throw 'value is not a number.';
+				}
+			});
+			console.log(sorted);
+		})();
+
+		// map
+		console.log('============= map ===============');
+		(function () {
+			var arr = [1,2,3];
+			var newArr = arr.map(function (value) {
+				return value * value;
+			});
+			console.log(newArr);
+		})();
+
+		// filter
+		console.log('============= filter ===============');
+		(function () {
+			var arr = [1, 2, 3, 4, 5, 6];
+			var newArr = arr.filter(function (value) {
+				return !(value % 2)
+			});
+			console.log(newArr);
+		})();
+
+		// find
+		console.log('============= find ===============');
+		(function () {
+			var arr = [1, 2, 3, 4, 5, 6];
+			var onlyValue = arr.find(function (value) {
+				return !(value % 2)
+			});
+			console.log(onlyValue);
+		})();
+
+		// every
+		console.log('============= every ===============');
+		(function () {
+			var arr = [1, 2, 3, 4, 5, 6];
+			var allIs = arr.every(function (value) {
+				return value < 10;
+			});
+			console.log(allIs);
+		})();
+
+		// some
+		console.log('============= some ===============');
+		(function () {
+			var arr = [1, 2, 3, 4, 5, 6];
+			var have = arr.some(function (value) {
+				return value === 6;
+			});
+			console.log(have);
+		})();
+
+	</script>
+</body>
+</html>
