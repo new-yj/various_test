@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>JS-Ajax</title>
+	<!-- <link rel="stylesheet" href=""> -->
+</head>
+<body>
+	
+
+	<script>
+		'use strict';
+		function sendAjax(method, url, async, func, data) {
+			// 创建XMLHttpRequest对象
+			var xhr;
+			if (window.XMLHttpRequest) {
+				xhr = new XMLHttpRequest();
+			} else {
+				xhr = new ActiveXObject('Microsoft.XMLHTTP');
+			}
+			// 发送Ajax请求
+			xhr.onreadystatechange = func;
+			xhr.open(method, url, async);
+			if (!data) {
+				data = null;
+			}
+			xhr.send(data);
+		}
+
+		sendAjax('GET', './json.json', true, function () {
+			var _this = this;
+			if (_this.readyState===4 && _this.status===200) {
+				document.body.innerText = (_this.responseText);
+			}
+		}, '');
+	</script>
+</body>
+</html>
