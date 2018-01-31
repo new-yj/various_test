@@ -35,10 +35,12 @@
 		let outer = document.getElementById('outer'),
 			inner = document.getElementById('inner');
 
-		outer.addEventListener('click', function () {
+		outer.addEventListener('click', function (e) {
+			// e.stopPropagation();	//停止时间传播
 			console.log('outer');
-		}, true);		//true为捕获
-		inner.addEventListener('click', function () {
+		});		//true为捕获
+		inner.addEventListener('click', function (e) {
+			e.stopPropagation();	//停止时间传播
 			console.log('inner');
 		});
 

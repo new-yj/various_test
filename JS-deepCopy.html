@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>JS-deepCopy</title>
+	<!-- <link rel="stylesheet" href=""> -->
+</head>
+<body>
+	
+	<script>
+		function deepCopy(source) {
+			//如果传入的值是null或undefined则直接返回
+			if (source===null || source===undefined) return source;
+			// 如果传入的值不是对象或数组也直接返回
+			if (source.constructor!==Array && source.constructor!==Object) {
+				return source;
+			} else {
+				//判断被复制的对象是数组还是对象
+				var tarObj = source.constructor === Array ? [] : {};
+			}
+			
+			// 遍历被复制的对象
+			for (var key in source) {
+				// 复制对象本身而不复制原型链
+				if (source.hasOwnProperty(key)) {
+					// 如果是对象
+					if (typeof source[key] === 'object') {
+						tarObj[key] = deepCopy(source[key]);
+					} else {	//如果不是对象则直接赋值
+						tarObj[key] = source[key];
+					}
+				}
+			}
+			return tarObj;
+		}
+
+		//测试
+		var obj = {
+			name: 'yj',
+			age: 21,
+			man: true,
+			hobby: ['basketball', 'game', 'programing'],
+			lover: { name: 'wtt', age: 22},
+			future: undefined,
+			ever: null,
+			birthday: new Date('1997-08-12'),
+			sayName: function () {
+				console.log(this.name);
+			}
+		}
+		var yj = deepCopy(obj);
+	</script>
+</body>
+</html>
