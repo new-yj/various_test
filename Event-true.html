@@ -36,11 +36,11 @@
 			inner = document.getElementById('inner');
 
 		outer.addEventListener('click', function (e) {
-			// e.stopPropagation();	//停止时间传播
+			// e.stopPropagation();	//停止事件传播
 			console.log('outer');
 		});		//true为捕获
 		inner.addEventListener('click', function (e) {
-			e.stopPropagation();	//停止时间传播
+			// e.stopPropagation();	//停止事件传播
 			console.log('inner');
 		});
 
