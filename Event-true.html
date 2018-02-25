@@ -38,9 +38,9 @@
 		outer.addEventListener('click', function (e) {
 			// e.stopPropagation();	//停止事件传播
 			console.log('outer');
-		});		//true为捕获
+		});		//true为捕获，默认为false
 		inner.addEventListener('click', function (e) {
-			// e.stopPropagation();	//停止事件传播
+			e.stopPropagation();	//停止事件传播
 			console.log('inner');
 		});
 

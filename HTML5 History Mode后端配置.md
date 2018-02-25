@@ -1,5 +1,6 @@
 #.htaccess（放网站根目录）
 ```<IfModule mod_rewrite.c>
+<IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
   RewriteRule ^index\.html$ - [L]
@@ -12,6 +13,7 @@
 
 #httpd.conf(修改)
 ```<Directory />
+<Directory/>
     #AllowOverride none
     #Require all denied
 
@@ -19,3 +21,4 @@
     AllowOverride None
 </Directory>
 ```
+
